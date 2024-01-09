@@ -1,0 +1,32 @@
+{% load adminlte_helpers %}
+{% load static %}
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+
+    <a href="/" class="brand-link">
+        <img src="{%static 'images/sakura.png' %}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+        <span class="brand-text font-weight-light">Python Django</span>
+    </a>
+
+    <div class="sidebar">
+        <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                <li class="nav-header">{% block nav_heading %}メニュー{% endblock %}</li>
+                <li class="nav-item has-tree-view ">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-object-group"></i>
+                        <p>顧客マスタ</p>
+                        <p><i class="right fas fa-angle-left"></i></p>
+                    </a>
+                    <ul class="nav nav-treeview menu-open">
+                        <li class="nav-item">
+                            <a href="{% url 'myapp:customers_search' %}" class="nav-link"><i class="nav-icon fas fa-circle"></i>検索</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{% url 'myapp:customers_input' %}" class="nav-link"><i class="nav-icon fas fa-circle"></i>新規登録</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</aside>

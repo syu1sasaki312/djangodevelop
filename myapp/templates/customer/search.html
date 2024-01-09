@@ -1,0 +1,94 @@
+{% extends '../base.html' %}
+{% load widget_tweaks %}
+
+{% block content %}
+<div class="container my-1">
+    <h2 class="text-center py-2">顧客マスタ検索</h2>
+</div>
+<form id="search-form" action="{% url 'myapp:customers_search' %}" method="GET">
+    {% csrf_token %}
+    <p class="h5">検索条件</p>
+    <table class="table table-sm table-info" width="100%">
+        <tr>
+            <td width="15%">
+                <div class="form-group mr-3">
+                    <label for="InputName">顧客名</label>
+                    {{form.name|add_class:"form-control"}}
+                </div>
+            </td>
+            <td width="5%"></td>
+            <td width="15%">
+                <div class="form-group mr-3">
+                    <label for="InputName">メールアドレス</label>
+                    {{form.mail|add_class:"form-control"}}
+                </div>
+            </td>
+            <td width="5%"></td>
+            <td width="40%">
+                <div class="form-group mr-3">
+                    <label for="InputName">住所</label>
+                    {{form.addr|add_class:"form-control"}}
+                </div>
+            </td>
+            <td width="5%"></td>
+            <td width="15%">
+                <div class="form-group mr-3">
+                    <label for="InputName">電話番号</label>
+                    {{form.tel|add_class:"form-control"}}
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="7">
+                <button type="submit" class="btn btn-primary">検索</button>
+            </td>
+        </tr>
+    </table>
+</form>
+<br>
+
+<table width="100%">
+    <tr>
+        <td width="80%"><p class="h5">検索一覧</p></td>
+        <td width="15%">{% include "../commons/pagecount.html" %}</td>
+        <td width="5%">{% include "../commons/paginator.html" %}</td>
+    </tr>
+</table>
+
+<table width="100%" class="table table-sm table-striped table-hover table_sticky">
+    <thead>
+        <tr class="table-primary">
+            <th width="2%">ID</th>
+            <th width="10%">会社名</th>
+            <th width="10%">メールアドレス</th>
+            <th width="5%">郵便番号</th>
+            <th>住所</th>
+            <th width="8%">TEL</th>
+            <th width="8%">FAX</th>
+            <th>公開/非公開</th>
+            <th width="10%">作成日</th>
+            <th width="10%">更新日</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for customer in object_list %}
+        <tr>
+            <td>{{ customer.id }}</td>
+            <td>{{ customer.name }}</td>
+            <td>{{ customer.mail }}</td>
+            <td>{{ customer.post }}</td>
+            <td>{{ customer.addr }}</td>
+            <td>{{ customer.tel }}</td>
+            <td>{{ customer.fax }}</td>
+            {% if customer.public_flag %}
+                <td><span class="badge badge-success">公開中</span></td>
+            {% else %}
+                <td><span class="badge badge-secondary">非公開</span></td>
+            {% endif %} 
+            <td>{{ customer.created_at }}</td>
+            <td>{{ customer.updated_at }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

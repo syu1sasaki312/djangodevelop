@@ -1,0 +1,7 @@
+{% load widget_tweaks %}
+ <div style="margin: -40px 0 0 0px;" class="form-switch">
+{{form|add_class:"form-check-input"|attr:"role:switch"}}
+</div>
+{% for err in form.errors %}
+<span class="badge badge-danger">{{ err }}</span>
+{% endfor %}

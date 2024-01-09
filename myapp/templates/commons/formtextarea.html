@@ -1,0 +1,5 @@
+{% load widget_tweaks %}
+{{form|add_class:"form-control"|attr:cols|attr:rows}}
+{% for err in form.errors %}
+<span class="badge badge-danger">{{ err }}</span>
+{% endfor %}

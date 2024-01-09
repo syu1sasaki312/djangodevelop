@@ -1,0 +1,48 @@
+{% extends '../base.html' %}
+{% block content %}
+<div class="container my-1">
+    <h2 class="text-center py-2">顧客マスタ登録</h2>
+</div>
+<p>{{ message }}</p>
+<form action="{% url 'myapp:customers_input' %}" method="POST">
+    {% csrf_token %}
+    <table class="table-sm" width="50%" style="margin-left:auto; margin-right: auto;">
+        <tr>
+            <td width="15%"><label for="InputName">{{ form.mail.label }}</label></td>
+            <td>{% include "../commons/forminput.html" with form=form.mail %}</td>
+        </tr>
+        <tr>
+            <td><label for="InputName">{{ form.name.label }}</label></td>
+            <td>{% include "../commons/forminput.html" with form=form.name %}</td>
+        </tr>
+        <tr>
+            <td><label for="InputName">{{ form.post.label }}</label></td>
+            <td>{% include "../commons/forminput.html" with form=form.post %}</td>
+        </tr>
+        <tr>
+            <td><label for="InputName">{{ form.addr.label }}</label></td>
+            <td>{% include "../commons/forminput.html" with form=form.addr %}</td>
+        </tr>
+        <tr>
+            <td><label for="InputName">{{ form.tel.label }}</label></td>
+            <td>{% include "../commons/forminput.html" with form=form.tel %}</td>
+        </tr>
+        <tr>
+            <td><label for="InputName">{{ form.fax.label }}</label></td>
+            <td>{% include "../commons/forminput.html" with form=form.fax %}</td>
+        </tr>
+        <tr>
+            <td><label for="InputName">{{ form.note.label }}</label></td>
+            <td>{% include "../commons/formtextarea.html" with form=form.note cols="cols:40" rows="rows:5" %}</td>
+        </tr>
+        <tr>
+            <td><label for="InputName">{{ form.public_flag.label }}</label></td>
+            <td>{% include "../commons/formcheckbox.html" with form=form.public_flag role="role:switch"%}</td>
+        </tr>
+        <tr>
+            <td><button type="submit" class="btn btn-primary">登録</button></td>
+            <td></td>
+        </tr>
+    </table>
+</form>
+{% endblock %}
