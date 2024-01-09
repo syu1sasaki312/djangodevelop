@@ -3,12 +3,9 @@ from django.db import models
 class Customer(models.Model):
     class Meta:
         db_table_comment = "顧客マスタ"
-        constraints = [
-            models.UniqueConstraint(fields=['mail'], name='unique_customer_mail')
-        ]
 
     id   = models.AutoField (db_comment='ID', primary_key=True)
-    mail = models.EmailField(db_comment='メールアドレス', max_length=50 , blank = False, null = False)
+    mail = models.EmailField(db_comment='メールアドレス', unique=True, max_length=50 , blank = False, null = False)
     name = models.CharField (db_comment='会社名', max_length=50 , blank = False, null = False)
     post = models.CharField (db_comment='郵便番号', max_length=10, blank = False, null = False )
     addr = models.CharField (db_comment='住所', max_length=200, blank = True , null = True )
