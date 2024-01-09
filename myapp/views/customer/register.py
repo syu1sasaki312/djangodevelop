@@ -15,5 +15,5 @@ class CustomerRegister(TemplateView):
         self.params["form"] = CustomerRegisterForm(request.POST)
         if self.params["form"].is_valid():
             self.params["form"].save(commit=True)
-            self.params["Message"] = "入力情報が登録されました。"
+            self.params["message"] = "入力情報が登録されました。"
         return render(request, self.template_name, context=self.params)

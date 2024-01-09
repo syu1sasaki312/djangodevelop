@@ -1,0 +1,17 @@
+<div class="container mt-3">
+    <div aria-live="polite" aria-atomic="true" style="position: relative;">
+        <div style="position: absolute; top: 20; right: 30; width:8em;">
+            <div role="alert" aria-live="assertive" aria-atomic="true" class="toast" data-autohide="false">
+                <div class="toast-body bg-success">{{tmsg}}</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(window).on('load', function (){
+        //処理
+        $('.toast').toast({animation:true, autohide: true, delay:1000});
+        $(".toast").toast("show");
+    });
+</script>

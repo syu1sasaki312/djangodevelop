@@ -1,9 +1,15 @@
 {% extends '../base.html' %}
+
 {% block content %}
+
+{% if message %}
+    {% include "../commons/toast.html" with tmsg=message %}
+{% endif %}
+
 <div class="container my-1">
     <h2 class="text-center py-2">顧客マスタ登録</h2>
 </div>
-<p>{{ message }}</p>
+
 <form action="{% url 'myapp:customers_input' %}" method="POST">
     {% csrf_token %}
     <table class="table-sm" width="50%" style="margin-left:auto; margin-right: auto;">
