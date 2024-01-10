@@ -1,19 +1,11 @@
-<style>
-.my {
-    background-color: #000;
-    color: #fff;
-    opacity: .1;
-}
-</style>
-
 <div aria-live="polite" aria-atomic="true" style="position: relative;">
     <div style="position: absolute;">
-        <div role="alert" aria-live="assertive" aria-atomic="true" class="toast" data-autohide="false">
-            {% if   info.type == 1%}
-                <div style="text-align: center;" class="toast-body bg-success">{{info.message}}</div>
-            {% elif info.type == 9%}
-                <div style="text-align: center;" class="toast-body bg-danger">{{info.message}}</div>
-            {% endif%}
+    {% if   info.type == 1%}
+        <div role="alert" aria-live="assertive" aria-atomic="true" class="toast bg-success" data-autohide="false">
+    {% elif info.type == 9%}
+        <div role="alert" aria-live="assertive" aria-atomic="true" class="toast bg-danger" data-autohide="false">
+    {% endif %}
+            <div style="text-align: center;" class="toast-body">{{info.message}}</div>
         </div>
     </div>
 </div>
