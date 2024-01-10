@@ -22,6 +22,12 @@ class CustomerRegisterForm(forms.ModelForm):
             },
         }
 
+    def clean_post(self):
+        rtn = self.cleaned_data['post']
+        if MyValidators.isPostNumber(rtn) is False:
+            raise forms.ValidationError('郵便番号を正しく入力してください。(ハイフン付)')
+        return rtn
+
     def clean_tel(self):
         rtn = self.cleaned_data['tel']
         if MyValidators.isTelephoneNumber(rtn) is False:

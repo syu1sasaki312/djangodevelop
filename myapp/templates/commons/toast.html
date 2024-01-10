@@ -1,9 +1,19 @@
-<div class="container mt-3">
-    <div aria-live="polite" aria-atomic="true" style="position: relative;">
-        <div style="position: absolute; top: 20; right: 30; width:8em;">
-            <div role="alert" aria-live="assertive" aria-atomic="true" class="toast" data-autohide="false">
-                <div class="toast-body bg-success">{{tmsg}}</div>
-            </div>
+<style>
+.my {
+    background-color: #000;
+    color: #fff;
+    opacity: .1;
+}
+</style>
+
+<div aria-live="polite" aria-atomic="true" style="position: relative;">
+    <div style="position: absolute;">
+        <div role="alert" aria-live="assertive" aria-atomic="true" class="toast" data-autohide="false">
+            {% if   info.type == 1%}
+                <div style="text-align: center;" class="toast-body bg-success">{{info.message}}</div>
+            {% elif info.type == 9%}
+                <div style="text-align: center;" class="toast-body bg-danger">{{info.message}}</div>
+            {% endif%}
         </div>
     </div>
 </div>
