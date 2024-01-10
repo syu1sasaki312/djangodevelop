@@ -11,31 +11,23 @@
     <table class="table table-sm table-info" width="100%">
         <tr>
             <td width="15%">
-                <div class="form-group mr-3">
-                    <label for="InputName">顧客名</label>
-                    {{form.name|add_class:"form-control"}}
-                </div>
+                <label for="InputName">顧客名</label>
+                {% include "../commons/forminput.html" with form=form.name %}
             </td>
             <td width="5%"></td>
             <td width="15%">
-                <div class="form-group mr-3">
-                    <label for="InputName">メールアドレス</label>
-                    {{form.mail|add_class:"form-control"}}
-                </div>
+                <label for="InputName">メールアドレス</label>
+                {% include "../commons/forminput.html" with form=form.mail %}
             </td>
             <td width="5%"></td>
             <td width="40%">
-                <div class="form-group mr-3">
-                    <label for="InputName">住所</label>
-                    {{form.addr|add_class:"form-control"}}
-                </div>
+                <label for="InputName">住所</label>
+                {% include "../commons/forminput.html" with form=form.addr %}
             </td>
             <td width="5%"></td>
             <td width="15%">
-                <div class="form-group mr-3">
-                    <label for="InputName">電話番号</label>
-                    {{form.tel|add_class:"form-control"}}
-                </div>
+                <label for="InputName">電話番号</label>
+                {% include "../commons/forminput.html" with form=form.tel %}
             </td>
         </tr>
         <tr>
