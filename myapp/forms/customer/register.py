@@ -36,6 +36,7 @@ class CustomerRegisterForm(forms.ModelForm):
 
     def clean_fax(self):
         rtn = self.cleaned_data['fax']
-        if MyValidators.isFaxNumber(rtn) is False:
-            raise forms.ValidationError('Fax番号を正しく入力してください。(ハイフン付)')
+        if rtn is not None:
+            if MyValidators.isFaxNumber(rtn) is False:
+                raise forms.ValidationError('Fax番号を正しく入力してください。(ハイフン付)')
         return rtn
